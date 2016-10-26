@@ -8,7 +8,7 @@ import * as mongodb from './models/mongodb.js';
 let app = express();
 
 // Datbase Connect
-mongoose.Proise = global.Promise;
+mongoose.Promise = global.Promise;
 mongodb.mongoConnect(mongoose);
 
 // Controller Imports
