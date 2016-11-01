@@ -22,16 +22,6 @@ function examplePost() {
 }
 
 function exampleGet(callback) {
-	exampleModel.find({}).exec((err, docs) => {
-		if (err) {
-			calback(err, null);
-		} else {
-			callback(null, docs);
-		}
-	});
-}
-
-function exampleGet(callback) {
     exampleModel.find({}).exec((err, docs) => {
         if (err) {
             callback(err, null);
