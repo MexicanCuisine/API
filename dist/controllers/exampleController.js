@@ -12,21 +12,28 @@ module.exports = function (app) {
         exampleModel.examplePost();
     });
 
-    app.get('/example/id/:id', function (req, res) {
+    app.get('/example/title/:title', function (req, res) {
         res.setHeader('Content-Type', 'application/json');
-        var id = req.params.id;
-        exampleModel.exampleGetId(req, res, id);
+        var value = req.params.title,
+            param = 'title';
+        exampleModel.exampleGetByParam(param, value, function (err, docs) {
+            if (err) {
+                res.status(500).send();
+            } else {
+                res.status(200).send(docs);
+            }
+        });
     });
 
     app.get('/example', function (req, res) {
         res.setHeader('Content-Type', 'application/json');
-        exampleModel.exampleGet(req, res);
-    });
-
-    app.put('/example/id/:id', function (req, res) {
-        res.setHeader('Content-Type', 'text/plain');
-        var id = req.params.id;
-        exampleModel.examplePut(req, res, id);
+        exampleModel.exampleGet(function (err, docs) {
+            if (err) {
+                res.status(500).send();
+            } else {
+                res.status(200).send(docs);
+            }
+        });
     });
 
     app.delete('/example/id/:id', function (req, res) {

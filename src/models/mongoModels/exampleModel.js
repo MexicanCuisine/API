@@ -21,24 +21,33 @@ function examplePost() {
 	});
 }
 
-function exampleGet(req, res) {
+function exampleGet(callback) {
 	exampleModel.find({}).exec((err, docs) => {
 		if (err) {
-			res.status(500).send('Error Fetching');
+			calback(err, null);
 		} else {
-			res.status(200).send(docs);
+			callback(null, docs);
 		}
 	});
 }
 
-function exampleGetId(req, res, id) {
-    console.log(id);
-    exampleModel.findOne({'_id': id}).exec((err, docs) => {
-
+function exampleGet(callback) {
+    exampleModel.find({}).exec((err, docs) => {
         if (err) {
-            res.status(500).send('Error Fetching');
+            callback(err, null);
         } else {
-            res.status(200).send(docs);
+            callback(null, docs);
+        }
+    });
+}
+
+function exampleGetByParam(param, value, callback) {
+    console.log(param + ' ' + value);
+    exampleModel.find({[param]: value}).exec((err, docs) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            callback(null, docs);
         }
     });
 }
@@ -71,4 +80,4 @@ function exampleDelete(req, res, id) {
         });
 }
 
-export { exampleGet, examplePost, examplePut, exampleDelete, exampleGetId };
+export { exampleGet, examplePost, examplePut, exampleDelete, exampleGetByParam };

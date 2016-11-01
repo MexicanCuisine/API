@@ -6,21 +6,28 @@ module.exports = (app) => {
         exampleModel.examplePost();
     });
 
-    app.get('/example/id/:id', (req, res) => {
+    app.get('/example/title/:title', (req, res) => {
         res.setHeader('Content-Type', 'application/json');
-        let id = req.params.id;
-        exampleModel.exampleGetId(req, res, id);
+        let value = req.params.title,
+            param = 'title';
+        exampleModel.exampleGetByParam(param, value, function(err, docs) {
+            if (err) {
+                res.status(500).send();
+            } else {
+                res.status(200).send(docs);
+            }
+        });
     });
 
     app.get('/example', (req, res) => {
         res.setHeader('Content-Type', 'application/json');
-        exampleModel.exampleGet(req, res);
-    });
-
-    app.put('/example/id/:id', (req, res) => {
-        res.setHeader('Content-Type', 'text/plain');
-        let id = req.params.id;
-        exampleModel.examplePut(req, res, id);
+        exampleModel.exampleGet(function(err, docs) {
+            if (err) {
+                res.status(500).send();
+            } else {
+                res.status(200).send(docs);
+            }
+        });
     });
 
     app.delete('/example/id/:id', (req, res) => {

@@ -21,7 +21,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = (0, _express2.default)();
 
 // Datbase Connect
-_mongoose2.default.Proise = global.Promise;
+_mongoose2.default.Promise = global.Promise;
 mongodb.mongoConnect(_mongoose2.default);
 
 // Controller Imports
