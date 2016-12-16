@@ -28,6 +28,6 @@ mongodb.mongoConnect(_mongoose2.default);
 require('./controllers/exampleController.js')(app);
 require('./controllers/default.js')(app);
 
-app.listen(3000, function () {
-	console.log('Listening on Port 3000');
+app.listen(3001, function () {
+	console.log('Listening on Port 3001');
 });
