@@ -1,16 +1,10 @@
 import * as productModel from '../../models/mongoModels/cartel/productModel.js';
 
 module.exports = (app) => {
-    /*
-    app.post('/example', (req, res) => {
-        res.setHeader('Content-Type', 'text/plain');
-        productModel.examplePost();
-    });*/
-
-    app.get('/cartel/product/:id', (req, res) => {
+    app.get('/cartel/products/sku/:sku', (req, res) => {
         res.setHeader('Content-Type', 'application/json');
-        let value = req.params.id,
-            param = 'id';
+        let value = req.params.sku,
+            param = 'sku';
         productModel.getProductsByParam(param, value, function(err, docs) {
             if (err) {
                 res.status(500).send();
@@ -20,7 +14,7 @@ module.exports = (app) => {
         });
     });
 
-    app.get('/cartel/product/', (req, res) => {
+    app.get('/cartel/products/', (req, res) => {
         res.setHeader('Content-Type', 'application/json');
         productModel.getAllProducts(function(err, docs) {
             if (err) {
@@ -30,11 +24,4 @@ module.exports = (app) => {
             }
         });
     });
-
-    /*
-    app.delete('/example/id/:id', (req, res) => {
-        res.setHeader('Content-Type', 'text/plain');
-        let id = req.params.id;
-        exampleModel.exampleDelete(req, res, id);
-    });*/
 }

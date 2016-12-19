@@ -1,42 +1,18 @@
 import mongoose from 'mongoose';
 
-import * as sampleData from '../../../data/sampleProduct';
-
-let productSchema = new mongoose.Schema({
-    id: Number,
-	artist: String,
-    album_title: String,
-    genre: String,
-    record_label: String,
-    price: {
-        gbp: Number,
-        eur: Number,
-        usd: Number
-    },
-	release_data: Date
-});
-
-let productModel = mongoose.model('cartel_products', productSchema);
+import * as sampleData from '../../../data/cartel_products';
 
 export function getAllProducts(callback) {
-    /*
-    productModel.find({}).exec((err, docs) => {
-        if (err) {
-            callback(err, null);
-        } else {
-            callback(null, docs);
-        }
-    });*/
-
-    return callback(null, sampleData.getData());
+    return callback(null, sampleData);
 }
 
 export function getProductsByParam(param, value, callback) {
-    productModel.find({[param]: value}).exec((err, docs) => {
-        if (err) {
-            callback(err, null);
-        } else {
-            callback(null, docs);
+    let productReturn;
+    for(let product in sampleData.default) {
+        if(sampleData.default[product][param] == value) {
+             productReturn = sampleData.default[product];
+             break;
         }
-    });
+    }
+    return callback(null, productReturn);
 }
