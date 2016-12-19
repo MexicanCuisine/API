@@ -13,6 +13,7 @@ mongodb.mongoConnect(mongoose);
 
 // Controller Imports
 require('./controllers/exampleController.js')(app);
+require('./controllers/cartel/productController.js')(app);
 require('./controllers/default.js')(app);
 
 app.listen(3001, function() {

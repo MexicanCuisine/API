@@ -1,4 +1,4 @@
-import * as productModel from '../models/mongoModels/cartel/productModel.js';
+import * as productModel from '../../models/mongoModels/cartel/productModel.js';
 
 module.exports = (app) => {
     /*
@@ -20,7 +20,7 @@ module.exports = (app) => {
         });
     });
 
-    app.get('/cartel/product', (req, res) => {
+    app.get('/cartel/product/', (req, res) => {
         res.setHeader('Content-Type', 'application/json');
         productModel.getAllProducts(function(err, docs) {
             if (err) {
