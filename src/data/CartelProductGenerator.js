@@ -7,7 +7,7 @@ export default class CartelProductGenerator {
         this.genres = this.getGenres();
 
         this.config = {
-            number_of_products = 100
+            number_of_product: 100
         }
     }
 
