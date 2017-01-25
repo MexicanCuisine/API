@@ -67,16 +67,28 @@ function generateMusicLabel(firstTitle, middleTitle) {
 var obj  = [];
 var sku = 1000;
 // DATA GENERATION
-for(var i=0; i != 30; i++) {
+for(var i=0; i != 60; i+=2) {
     var tmpObj = {
-        sku: sku,
-        artist_title: generateArtistTitle(firstTitle, secondTitle),
+        brand_name: generateArtistTitle(firstTitle, secondTitle),
         album_title: generateAlbumTitle(firstTitle, middleTitle, secondTitle),
-        price: generatePrice(),
-        genre: generateGenre(genres),
-        release_date: Math.floor(Math.random() * (2018 - 1990 + 1)) + 1990,
-        record_label: generateMusicLabel(firstTitle, middleTitle)
-    };
+        production_date: Math.floor(Math.random() * (2018 - 1990 + 1)) + 1990,
+        details: {
+            genre: generateGenre(genres),
+            record_label: generateMusicLabel(firstTitle, middleTitle)
+        },
+        variants: {
+            0: {
+                sku: sku,
+                type: 'vinyl',
+                price: generatePrice()
+            },
+            1: {
+                sku: sku + 1,
+                type: 'cd',
+                price: generatePrice()
+            }
+        }
+    }
 
     obj.push(tmpObj);
     sku++;
