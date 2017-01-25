@@ -42,7 +42,7 @@ function generatePrice() {
     var mainPrice = Math.floor((Math.random() * 50) + 1);
     var subPrice = Math.floor((Math.random() * 99) + 0);
 
-    if (subPrice.length == 1) subPrice = '0' + subPrice.toString();
+    if (subPrice.toString().length == 1) subPrice =  subPrice.toString() + '0';
 
     return {
         gbp: mainPrice + '.' + subPrice,
