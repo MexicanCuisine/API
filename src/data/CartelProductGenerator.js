@@ -1,26 +1,78 @@
 export default class CartelProductGenerator {
     constructor() {
-        this.products = {};
+        this.products = 0;
         this.firstTitles = this.getFirstTitles();
         this.middleTitles = this.getMiddleTitles();
         this.secondTitles = this.getSecondTitles();
         this.genres = this.getGenres();
+        this.skuCount = 1000;
+        this.idCount = 5000;
 
         this.config = {
-            number_of_product: 100
+            number_of_products: 100
         }
     }
 
+    getProducts() {
+        if (this.products === 0) {
+            this.products = this.buildProducts();
+        }
+        return this.products;
+        
+    }
+
     buildProducts() {
-        // Using build product multiple times
+        let array = [];
+        for(let c = 0; c != this.config.number_of_products; c++) {
+            array.push(this.buildProduct());
+        }
+
+        return array;
     }
 
     buildProduct() {
-        // Build a single product at a time
+        let productObj = {};
+
+        productObj.id = this.idCount;
+        productObj.brand_name = this.generateArtistTitle();
+        productObj.product_title = this.generateAlbumTitle();
+        productObj.production_date = Math.floor(Math.random() * (2018 - 1990 + 1)) + 1990;
+        productObj.details = {
+            genre: this.generateGenre(),
+            record_label: this.generateMusicLabel()
+        }
+        productObj.variants = this.buildVariants();
+        
+        this.idCount++;
+
+        return productObj
     }
 
     buildVariants() {
-        // Generate 1-3 variants per product
+        let c = Math.floor(Math.random() * 3) + 1;
+        let variantObj = {};
+
+        for (let i = 0; i != c; i++) {
+            let tmpObj = {};
+
+            tmpObj.sku = this.skuCount;
+            switch(i) {
+                case 0:
+                    tmpObj.type = 'vinyl'
+                    break;
+                case 1:
+                    tmpObj.type = 'cd'
+                    break;
+                case 2:
+                    tmpObj.type = 'digital'
+            }
+            tmpObj.price = this.generatePrice();
+            this.skuCount++;
+
+            variantObj[i] = tmpObj;
+        }
+
+        return variantObj;
     }
 
     generateArtistTitle() {

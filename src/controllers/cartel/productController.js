@@ -1,10 +1,10 @@
 import * as productModel from '../../models/mongoModels/cartel/productModel.js';
 
 module.exports = (app) => {
-    app.get('/cartel/products/sku/:sku', (req, res) => {
+    app.get('/cartel/products/id/:id', (req, res) => {
         res.setHeader('Content-Type', 'application/json');
-        let value = req.params.sku,
-            param = 'sku';
+        let value = req.params.id,
+            param = 'id';
         productModel.getProductsByParam(param, value, function(err, docs) {
             if (err) {
                 res.status(500).send();
