@@ -5,9 +5,10 @@ export default class CartelProductGenerator {
         this.middleTitles = this.getMiddleTitles();
         this.secondTitles = this.getSecondTitles();
         this.genres = this.getGenres();
+        this.albumCovers = this.getAlbumCovers();
         this.skuCount = 1000;
         this.idCount = 5000;
-
+        
         this.config = {
             number_of_products: 100
         }
@@ -42,6 +43,10 @@ export default class CartelProductGenerator {
             record_label: this.generateMusicLabel()
         }
         productObj.variants = this.buildVariants();
+        productObj.productImages = {
+            main: this.generateAlbumCover(),
+            additional: []
+        };
         
         this.idCount++;
 
@@ -113,6 +118,10 @@ export default class CartelProductGenerator {
         return this.genres[Math.floor((Math.random() * this.genres.length) + 0)];
     }
 
+    generateAlbumCover() {
+        return this.albumCovers[Math.floor((Math.random() * this.albumCovers.length) + 0)];
+    }
+
     generateMusicLabel() {
         var firstTitleNum = Math.floor((Math.random() * this.firstTitles.length) + 0);
         var middleTitleNum = Math.floor((Math.random() * this.middleTitles.length) + 0);
@@ -145,6 +154,20 @@ export default class CartelProductGenerator {
     getGenres() {
         return [
             'rock', 'punk', 'metal', 'jazz', 'grunge'
+        ];
+    }
+
+    getAlbumCovers() {
+        return [
+            'https://upload.wikimedia.org/wikipedia/en/6/62/AFI_-_Black_Sails_in_the_Sunset_cover.jpg',
+            'https://upload.wikimedia.org/wikipedia/en/0/03/OnlyRevolutions.jpg',
+            'https://upload.wikimedia.org/wikipedia/en/7/7b/Brand_New_Deja_Entendu.jpg',
+            'https://f4.bcbits.com/img/a1312192493_10.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/81Xq%2BaaZSwL._SY355_.jpg',
+            'https://www.punkrocktheory.com/sites/default/files/styles/image_style_square/public/entershikari.jpg',
+            'http://media.tumblr.com/05e583863678f535f2c8c9462f430f70/tumblr_inline_mu3pfzFth61qzxlbn.jpg',
+            'https://upload.wikimedia.org/wikipedia/en/7/7b/Without_you_im_nothing.jpg',
+            'https://upload.wikimedia.org/wikipedia/en/b/b0/Royal_Blood_-_Royal_Blood_(Artwork).jpg'
         ];
     }
 }
