@@ -10,7 +10,7 @@ export default class CartelProductGenerator {
         this.idCount = 5000;
         
         this.config = {
-            number_of_products: 100
+            number_of_products: 50
         }
     }
 
