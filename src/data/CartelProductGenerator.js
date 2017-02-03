@@ -66,7 +66,7 @@ export default class CartelProductGenerator {
                     tmpObj.type = 'vinyl'
                     break;
                 case 1:
-                    tmpObj.type = 'cd'
+                    tmpObj.type = 'CD'
                     break;
                 case 2:
                     tmpObj.type = 'digital'

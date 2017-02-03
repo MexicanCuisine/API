@@ -19,7 +19,7 @@ module.exports = (app) => {
                         // For Each Variant In Product
                         for (let variant in docs[prod].variants) {
                             if (docs[prod].variants.hasOwnProperty(variant)) {
-                                if (docs[prod].variants[variant].type == format) {
+                                if (docs[prod].variants[variant].type.toLowerCase() == format) {
                                     returnedProducts.push(docs[prod]);
                                 }
                             }
