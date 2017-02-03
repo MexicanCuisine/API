@@ -32,6 +32,31 @@ module.exports = (app) => {
     });
 
     /*
+        GET BY GENRE
+    */
+    app.get('/cartel/products/genre/:genre', (req, res) => {
+        res.setHeader('Content-Type', 'application/json');
+        const genre = req.params.genre;
+
+        productModel.getAllProducts(function(err, docs) {
+            if (err) {
+                res.status(500).send();
+            } else {
+                let returnedProducts = [];
+                // For Each Product Returned
+                 for (let prod in docs) {
+                    if (docs.hasOwnProperty(prod)) {
+                        if (docs[prod].details.genre == genre) {
+                            returnedProducts.push(docs[prod]);
+                        }
+                    }
+                 }
+                res.status(200).send(returnedProducts);
+            }
+        });
+    });
+
+    /*
         GET BY PRODUCT ID
     */
     app.get('/cartel/products/id/:id', (req, res) => {
