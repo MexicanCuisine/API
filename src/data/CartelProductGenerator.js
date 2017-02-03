@@ -43,7 +43,7 @@ export default class CartelProductGenerator {
             record_label: this.generateMusicLabel()
         }
         productObj.variants = this.buildVariants();
-        productObj.productImages = {
+        productObj.product_images = {
             main: this.generateAlbumCover(),
             additional: []
         };
@@ -167,7 +167,13 @@ export default class CartelProductGenerator {
             'https://www.punkrocktheory.com/sites/default/files/styles/image_style_square/public/entershikari.jpg',
             'http://media.tumblr.com/05e583863678f535f2c8c9462f430f70/tumblr_inline_mu3pfzFth61qzxlbn.jpg',
             'https://upload.wikimedia.org/wikipedia/en/7/7b/Without_you_im_nothing.jpg',
-            'https://upload.wikimedia.org/wikipedia/en/b/b0/Royal_Blood_-_Royal_Blood_(Artwork).jpg'
+            'https://upload.wikimedia.org/wikipedia/en/b/b0/Royal_Blood_-_Royal_Blood_(Artwork).jpg',
+            'http://cf-images.emusic.com/music/images/album/153/446/15344699/600x600.jpg',
+            'https://ebruyildiz.wordpress.com/files/2009/01/photograph7.jpg',
+            'https://artistxite.com/imgcache/album/005/359/005359030_500.jpg',
+            'https://images-eu.ssl-images-amazon.com/images/I/61EC4GDJisL._SS500.jpg',
+            'https://images-eu.ssl-images-amazon.com/images/I/517CmdGMrTL._SS500.jpg',
+            'https://cbsradionews.files.wordpress.com/2014/07/weezer-everything-album.jpg'
         ];
     }
 }
